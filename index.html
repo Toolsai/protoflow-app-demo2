@@ -1,0 +1,158 @@
+<html lang="zh-TW"><head></head><body class="text-white overflow-hidden">```html
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啟動歡迎頁 - Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bg-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+
+
+
+    <!-- Hero Section -->
+    <main class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+        
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/seed/p1/1920/1080" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-overlay"></div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 container mx-auto px-6 text-center">
+            
+            <!-- Logo Area -->
+            <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="inline-flex items-center justify-center w-24 h-24 mb-6 rounded-3xl bg-indigo-600 shadow-lg shadow-indigo-500/50">
+                    <i class="fa-solid fa-layer-group text-4xl text-white"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4">
+                    NEXUS <span class="text-indigo-400">PRO</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    探索無限可能。透過我們的高效能工具，將您的創意轉化為現實，體驗前所未有的智能流暢。
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
+                <button class="group relative px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-indigo-600/30 flex items-center ring-2 ring-blue-500 ring-offset-2" id="action-0-1429" data-goto="p2">
+                    <span>開始使用</span>
+                    <i class="fa-solid fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                
+                <button class="px-8 py-4 glass-card hover:bg-white/10 text-white rounded-full font-semibold text-lg transition-all duration-300 ring-2 ring-blue-500 ring-offset-2" id="action-1-6647" data-goto="p2">
+                    先逛逛看
+                </button>
+            </div>
+
+            <!-- Footer Features -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style="animation-delay: 1s;">
+                <div class="flex flex-col items-center">
+                    <div class="text-indigo-400 mb-2"><i class="fa-solid fa-bolt text-2xl"></i></div>
+                    <h3 class="font-medium">極速效能</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-indigo-400 mb-2"><i class="fa-solid fa-shield-halved text-2xl"></i></div>
+                    <h3 class="font-medium">隱私安全</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-indigo-400 mb-2"><i class="fa-solid fa-cloud-arrow-up text-2xl"></i></div>
+                    <h3 class="font-medium">雲端同步</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-40 animate-bounce">
+            <p class="text-xs uppercase tracking-widest mb-2">了解更多</p>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+    </main>
+
+    <!-- Page Transition Overlay (Mockup) -->
+    <div id="transition-overlay" class="fixed inset-0 bg-slate-900 translate-y-full transition-transform duration-500 z-50 flex items-center justify-center">
+        <div class="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+
+    <script>
+        // Simple Interaction Script for Prototype
+        document.querySelectorAll('[data-goto]').forEach(element => {
+            element.addEventListener('click', function() {
+                const targetPage = this.getAttribute('data-goto');
+                const overlay = document.getElementById('transition-overlay');
+                
+                console.log(`Navigating to Page: ${targetPage}`);
+                
+                // Show transition overlay
+                overlay.classList.remove('translate-y-full');
+                
+                // Simulate navigation delay
+                setTimeout(() => {
+                    // In a real app, this would change the window.location or push state
+                    alert(`正在跳轉至頁面: ${targetPage}`);
+                    overlay.classList.add('translate-y-full');
+                }, 800);
+            });
+        });
+
+        // Entrance Animation Logic
+        window.addEventListener('load', () => {
+            // Optional additional triggers
+        });
+    </script>
+
+
+
+```
+<script>
+  // Pro Prototype - Static Navigation Shim
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-goto]');
+      if (target) {
+        e.preventDefault();
+        const pageId = target.getAttribute('data-goto');
+        // Navigate to the corresponding HTML file
+        window.location.href = pageId + '.html';
+      }
+    });
+  });
+</script>
+</body></html>
