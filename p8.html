@@ -1,0 +1,272 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統與偏好設定 - p8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #3b82f6;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-darkBg text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
+            <button data-goto="p7" class="p-2 -ml-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+                <i class="fa-solid fa-chevron-left text-xl"></i>
+            </button>
+            <h1 class="text-lg font-bold">系統與偏好設定</h1>
+            <div class="w-10"></div> <!-- Spacer for centering title -->
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-6 space-y-8 pb-20">
+        
+        <!-- Section: 通知設定 -->
+        <section>
+            <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 px-1">通知管理</h2>
+            <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+                <!-- Push Notifications -->
+                <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">推播通知</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">接收即時動態與更新</p>
+                        </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    </label>
+                </div>
+
+                <!-- Email Notifications -->
+                <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">電子郵件通知</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">每週摘要與帳戶活動</p>
+                        </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer">
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    </label>
+                </div>
+
+                <!-- Marketing -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 dark:text-pink-400">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">行銷優惠</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">最新的折扣與推廣活動</p>
+                        </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer">
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: 個人化 -->
+        <section>
+            <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 px-1">顯示與偏好</h2>
+            <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+                <!-- Theme Mode -->
+                <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <i class="fa-solid fa-moon dark:hidden"></i>
+                            <i class="fa-solid fa-sun hidden dark:block"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">深色模式</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">調整介面視覺外觀</p>
+                        </div>
+                    </div>
+                    <button onclick="document.documentElement.classList.toggle('dark')" class="relative inline-flex items-center cursor-pointer">
+                         <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-blue-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] dark:after:left-[22px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"></div>
+                    </button>
+                </div>
+
+                <!-- Language Selection -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">語言設定</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">繁體中文 (台灣)</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-400 text-sm"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: 安全與隱私 -->
+        <section>
+            <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 px-1">隱私與安全</h2>
+            <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+                <!-- Privacy Policy -->
+                <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">隱私權政策</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">了解我們如何保護您的數據</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-400 text-sm"></i>
+                </div>
+
+                <!-- Data Usage -->
+                <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">數據管理</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">匯出或刪除您的帳戶資料</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-400 text-sm"></i>
+                </div>
+
+                <!-- Password -->
+                <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">修改密碼</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">上次修改於 3 個月前</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-400 text-sm"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: 其他 -->
+        <section>
+            <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 px-1">關於系統</h2>
+            <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+                <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800">
+                    <span class="font-medium">版本</span>
+                    <span class="text-slate-500 dark:text-slate-400 text-sm font-mono">v2.4.0 (Build 20231012)</span>
+                </div>
+                <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                    <span class="font-medium">檢查更新</span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                        最新版本
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Danger Zone -->
+        <section class="pt-4">
+            <button data-goto="p2" class="w-full bg-white dark:bg-darkCard hover:bg-red-50 dark:hover:bg-red-900/10 text-red-600 border border-slate-200 dark:border-slate-800 py-4 px-4 rounded-2xl flex items-center justify-center space-x-2 transition-all group">
+                <i class="fa-solid fa-right-from-bracket group-hover:translate-x-1 transition-transform"></i>
+                <span class="font-bold">登出帳號</span>
+            </button>
+            <p class="text-center text-xs text-slate-400 mt-6 mb-10">
+                © 2023 應用程式名稱. 保留所有權利。
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Navigation Handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Internal Navigation
+            const clickableElements = document.querySelectorAll('[data-goto]');
+            clickableElements.forEach(el => {
+                el.addEventListener('click', () => {
+                    const targetId = el.getAttribute('data-goto');
+                    console.log('Navigating to:', targetId);
+                    // In a real environment, this would trigger router.push or window.location
+                    // For prototype, we'll just flash the screen or provide visual feedback
+                    document.body.classList.add('opacity-0');
+                    setTimeout(() => {
+                        alert('Prototype: 跳轉至頁面 ID ' + targetId);
+                        document.body.classList.remove('opacity-0');
+                    }, 300);
+                });
+            });
+
+            // Switch Toggles Simulation
+            const toggles = document.querySelectorAll('input[type="checkbox"]');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('change', (e) => {
+                    const label = e.target.closest('div').querySelector('p.font-medium').innerText;
+                    console.log(`${label} set to ${e.target.checked}`);
+                });
+            });
+        });
+    </script>
+
+
+<script>
+  // Pro Prototype - Static Navigation Shim
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-goto]');
+      if (target) {
+        e.preventDefault();
+        const pageId = target.getAttribute('data-goto');
+        // Navigate to the corresponding HTML file
+        window.location.href = pageId + '.html';
+      }
+    });
+  });
+</script>
+</body>
+</html>
+```
