@@ -1,0 +1,148 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作成功確認 - p9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes success-pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes checkmark-draw {
+            to { stroke-dashoffset: 0; }
+        }
+        .animate-success {
+            animation: success-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .checkmark-path {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: checkmark-draw 0.8s ease-in-out forwards;
+            animation-delay: 0.4s;
+        }
+        .bg-mesh {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(15, 118, 110, 0.15) 0, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen text-slate-100 font-sans flex items-center justify-center p-4">
+
+    <!-- Success Page Container -->
+    <div class="max-w-md w-full bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 text-center shadow-2xl animate-success">
+        
+        <!-- Animated Success Icon -->
+        <div class="flex justify-center mb-8">
+            <div class="relative">
+                <!-- Outer Ring Glow -->
+                <div class="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full scale-150"></div>
+                
+                <!-- Icon Circle -->
+                <div class="relative w-24 h-24 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path class="checkmark-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Message Header -->
+        <h1 class="text-3xl font-bold mb-4 tracking-tight text-white">操作已成功！</h1>
+        
+        <!-- Description -->
+        <p class="text-slate-400 mb-10 leading-relaxed">
+            您的請求已順利完成處理。相關系統資料已同步更新，您可以繼續進行下一個步驟或返回主頁。
+        </p>
+
+        <!-- Transaction/Ref Number Mock -->
+        <div class="bg-slate-900/40 rounded-2xl p-4 mb-10 border border-slate-700/30 text-left">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-xs text-slate-500 uppercase font-semibold tracking-wider">交易代碼</span>
+                <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">處理完成</span>
+            </div>
+            <div class="font-mono text-sm text-slate-300">TXN-7749-8230-XPQ</div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-4">
+            <!-- Primary Action -->
+            <button data-goto="p4" class="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.98] shadow-lg shadow-emerald-500/20 flex items-center justify-center group">
+                <span>返回應用首頁</span>
+                <i class="fa-solid fa-house ml-2 transition-transform group-hover:-translate-y-0.5"></i>
+            </button>
+
+            <!-- Secondary Actions -->
+            <div class="grid grid-cols-2 gap-4">
+                <button data-goto="p6" class="bg-slate-700/50 hover:bg-slate-700 text-slate-200 font-semibold py-4 rounded-2xl transition-all border border-slate-600/50 active:scale-[0.98] flex items-center justify-center group">
+                    <i class="fa-solid fa-circle-info mr-2 opacity-70 group-hover:opacity-100"></i>
+                    查看詳情
+                </button>
+                <button data-goto="p5" class="bg-slate-700/50 hover:bg-slate-700 text-slate-200 font-semibold py-4 rounded-2xl transition-all border border-slate-600/50 active:scale-[0.98] flex items-center justify-center group">
+                    <i class="fa-solid fa-magnifying-glass mr-2 opacity-70 group-hover:opacity-100"></i>
+                    繼續探索
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer Help -->
+        <div class="mt-10 pt-6 border-t border-slate-700/50">
+            <p class="text-sm text-slate-500">
+                遇到問題？ <button data-goto="p8" class="text-emerald-400 hover:underline">聯繫系統客服</button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Decorative Elements (Blobs) -->
+    <div class="fixed top-0 -left-20 w-72 h-72 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-0 -right-20 w-72 h-72 bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <script>
+        // Simple Interaction Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('[data-goto]');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetPage = button.getAttribute('data-goto');
+                    console.log(`Navigating to: ${targetPage}`);
+                    
+                    // Add transition effect before "navigation"
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    
+                    setTimeout(() => {
+                        // In a real prototype, this would redirect or switch views.
+                        // For this mockup, we just alert.
+                        alert(`跳轉至頁面 ID: ${targetPage}`);
+                        document.body.style.opacity = '1';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+
+<script>
+  // Pro Prototype - Static Navigation Shim
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-goto]');
+      if (target) {
+        e.preventDefault();
+        const pageId = target.getAttribute('data-goto');
+        // Navigate to the corresponding HTML file
+        window.location.href = pageId + '.html';
+      }
+    });
+  });
+</script>
+</body>
+</html>
+
+```
