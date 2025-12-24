@@ -1,0 +1,220 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>內容詳情頁面 - Content Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+    <!-- Page Container -->
+    <div id="p6" class="max-w-md mx-auto relative bg-slate-900 min-h-screen pb-24 shadow-2xl overflow-x-hidden">
+        
+        <!-- Header Navigation (Floating) -->
+        <div class="absolute top-0 left-0 right-0 z-50 flex justify-between items-center p-4">
+            <button data-goto="p5" class="w-10 h-10 flex items-center justify-center rounded-full glass-effect text-white">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="flex gap-2">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full glass-effect text-white">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-full glass-effect text-white">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="relative h-[400px] w-full overflow-hidden">
+            <img src="https://picsum.photos/seed/p6_hero/800/1000" alt="Detail Cover" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/20"></div>
+            
+            <!-- Category Badge -->
+            <div class="absolute bottom-6 left-6 flex flex-col gap-2">
+                <span class="px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full w-fit uppercase tracking-widest">
+                    精選課程
+                </span>
+                <h1 class="text-3xl font-bold text-white drop-shadow-md">數位未來設計大師</h1>
+            </div>
+        </div>
+
+        <!-- Content Body -->
+        <div class="px-6 pt-6 space-y-8">
+            
+            <!-- Metadata Row -->
+            <div class="flex justify-between items-center py-4 border-y border-slate-800">
+                <div class="text-center">
+                    <p class="text-slate-400 text-xs uppercase tracking-tighter">評分</p>
+                    <p class="text-lg font-semibold text-indigo-400">4.9 <span class="text-xs text-slate-500 font-normal">(1.2k)</span></p>
+                </div>
+                <div class="text-center border-x border-slate-800 px-8">
+                    <p class="text-slate-400 text-xs uppercase tracking-tighter">時長</p>
+                    <p class="text-lg font-semibold">12 小時</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-slate-400 text-xs uppercase tracking-tighter">難度</p>
+                    <p class="text-lg font-semibold">進階</p>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <section class="space-y-3">
+                <h3 class="text-xl font-bold">項目描述</h3>
+                <p class="text-slate-400 leading-relaxed">
+                    本課程旨在為設計師提供最前衛的數位工具與思維模式。我們將深入探討未來 UI/UX 的趨勢，包括動態介面設計、3D 視覺整合以及 AI 協作設計流程。無論您是想提升個人技術，或是尋求職業突破，這都是您的最佳選擇。
+                </p>
+                <button class="text-indigo-400 font-medium text-sm hover:underline">顯示更多...</button>
+            </section>
+
+            <!-- Media Gallery -->
+            <section class="space-y-4">
+                <div class="flex justify-between items-end">
+                    <h3 class="text-xl font-bold">預覽畫面</h3>
+                    <span class="text-slate-500 text-xs">8 張照片</span>
+                </div>
+                <div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
+                    <div class="min-w-[200px] h-32 rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+                        <img src="https://picsum.photos/seed/p6_1/400/300" class="w-full h-full object-cover">
+                    </div>
+                    <div class="min-w-[200px] h-32 rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+                        <img src="https://picsum.photos/seed/p6_2/400/300" class="w-full h-full object-cover">
+                    </div>
+                    <div class="min-w-[200px] h-32 rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+                        <img src="https://picsum.photos/seed/p6_3/400/300" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructor/Host -->
+            <section class="p-4 bg-slate-800/50 rounded-2xl flex items-center gap-4">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-indigo-500">
+                    <img src="https://picsum.photos/seed/avatar_p6/100/100" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-bold">陳志豪 (Alex Chen)</h4>
+                    <p class="text-slate-400 text-sm">前矽谷資深設計主管</p>
+                </div>
+                <button class="text-xs px-4 py-2 border border-slate-600 rounded-full font-semibold hover:bg-slate-700">追蹤</button>
+            </section>
+
+            <!-- Reviews Section -->
+            <section class="space-y-5">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">學員評價</h3>
+                    <button class="text-indigo-400 text-sm font-semibold">查看全部</button>
+                </div>
+                
+                <!-- Single Review -->
+                <div class="space-y-4">
+                    <div class="bg-slate-800/30 p-4 rounded-2xl space-y-3">
+                        <div class="flex justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-[10px]">
+                                    JD
+                                </div>
+                                <span class="font-medium text-sm">Jane Doe</span>
+                            </div>
+                            <div class="flex text-yellow-500 text-[10px]">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400">這是我參加過最棒的進階課程！課程內容非常紮實，特別是 AI 工具的應用部分真的讓我大開眼界。</p>
+                        <span class="text-[10px] text-slate-500">2 天前</span>
+                    </div>
+
+                    <div class="bg-slate-800/30 p-4 rounded-2xl space-y-3">
+                        <div class="flex justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-[10px]">
+                                    MK
+                                </div>
+                                <span class="font-medium text-sm">Mark Kevin</span>
+                            </div>
+                            <div class="flex text-yellow-500 text-[10px]">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star text-slate-600"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400">範例非常實用，對於已經有基礎的人來說是非常好的進修素材。如果能有更多互動環節會更好。</p>
+                        <span class="text-[10px] text-slate-500">1 週前</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sticky Bottom Action Bar -->
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto p-4 bg-slate-900/80 backdrop-blur-xl border-t border-slate-800 z-[60]">
+            <div class="flex items-center gap-4">
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest">目前價格</span>
+                    <span class="text-2xl font-bold text-white">$1,280</span>
+                </div>
+                <button data-goto="p9" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-2xl shadow-lg shadow-indigo-900/20 transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <span>立即報名行動</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script for handling navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('[data-goto]');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-goto');
+                    console.log(`Navigating to: ${targetId}`);
+                    // In a real scenario, this would trigger page switching logic.
+                    // For the prototype, we can show a feedback or simulate logic.
+                    const targetPage = document.getElementById(targetId);
+                    if (targetPage) {
+                        // Normally we'd hide others and show this one
+                        // But since this is a single file request, we assume the framework handles visibility
+                    }
+                });
+            });
+        });
+    </script>
+
+<script>
+  // Pro Prototype - Static Navigation Shim
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-goto]');
+      if (target) {
+        e.preventDefault();
+        const pageId = target.getAttribute('data-goto');
+        // Navigate to the corresponding HTML file
+        window.location.href = pageId + '.html';
+      }
+    });
+  });
+</script>
+</body>
+</html>
+```
