@@ -1,0 +1,237 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新手功能導覽 - Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow: hidden;
+        }
+
+        .slide {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(50px);
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
+        }
+
+        .slide.prev {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50px);
+        }
+
+        .dot {
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            width: 1.5rem;
+            background-color: #3b82f6;
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+        }
+    </style>
+</head>
+<body class="gradient-bg h-screen w-full relative">
+
+    <!-- Top Navigation -->
+    <div class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50">
+        <div class="text-xl font-bold tracking-wider text-blue-500">NEXUS</div>
+        <button data-goto="p4" class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+            跳過導覽
+        </button>
+    </div>
+
+    <!-- Onboarding Slider -->
+    <div id="slider-container" class="relative h-full w-full">
+        
+        <!-- Slide 1 -->
+        <div class="slide active" id="slide-0">
+            <div class="relative w-72 h-72 mb-12">
+                <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <img src="https://picsum.photos/seed/p3_1/600/600" alt="Discovery" class="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl border border-white/10">
+            </div>
+            <h1 class="text-3xl font-bold mb-4 text-center">探索無限可能</h1>
+            <p class="text-gray-400 text-center max-w-xs leading-relaxed">
+                匯聚全球頂尖創意，為您推薦最符合個人品味的專屬內容。
+            </p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" id="slide-1">
+            <div class="relative w-72 h-72 mb-12">
+                <div class="absolute inset-0 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <img src="https://picsum.photos/seed/p3_2/600/600" alt="AI Logic" class="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl border border-white/10">
+            </div>
+            <h1 class="text-3xl font-bold mb-4 text-center">智慧精準匹配</h1>
+            <p class="text-gray-400 text-center max-w-xs leading-relaxed">
+                利用先進 AI 演算法，在數百萬條資訊中快速找到您的最愛。
+            </p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" id="slide-2">
+            <div class="relative w-72 h-72 mb-12">
+                <div class="absolute inset-0 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <img src="https://picsum.photos/seed/p3_3/600/600" alt="Connect" class="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl border border-white/10">
+            </div>
+            <h1 class="text-3xl font-bold mb-4 text-center">與世界同步分享</h1>
+            <p class="text-gray-400 text-center max-w-xs leading-relaxed">
+                簡潔流暢的社交體驗，讓分享變得無比簡單，精彩不留遺憾。
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="fixed bottom-0 left-0 w-full p-8 z-50">
+        <div class="flex flex-col items-center gap-8">
+            
+            <!-- Indicators -->
+            <div class="flex gap-2">
+                <div class="dot active w-2 h-2 rounded-full bg-gray-600" id="dot-0"></div>
+                <div class="dot w-2 h-2 rounded-full bg-gray-600" id="dot-1"></div>
+                <div class="dot w-2 h-2 rounded-full bg-gray-600" id="dot-2"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="w-full max-w-sm flex justify-between items-center">
+                <button id="prevBtn" class="invisible w-12 h-12 flex items-center justify-center rounded-full border border-gray-700 text-gray-400 hover:bg-white/5 transition-all">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                
+                <button id="nextBtn" class="flex-1 ml-4 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-blue-500/30 transition-all active:scale-95">
+                    繼續下一步
+                </button>
+
+                <button id="startBtn" data-goto="p4" class="hidden flex-1 ml-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-blue-500/30 transition-all active:scale-95">
+                    立即開啟旅程
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentSlide = 0;
+            const totalSlides = 3;
+            
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const startBtn = document.getElementById('startBtn');
+
+            function updateUI() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('active', 'prev');
+                    if (index === currentSlide) {
+                        slide.classList.add('active');
+                    } else if (index < currentSlide) {
+                        slide.classList.add('prev');
+                    }
+                });
+
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active', 'bg-blue-500');
+                        dot.classList.remove('bg-gray-600');
+                    } else {
+                        dot.classList.remove('active', 'bg-blue-500');
+                        dot.classList.add('bg-gray-600');
+                    }
+                });
+
+                // Toggle visibility of buttons
+                if (currentSlide === 0) {
+                    prevBtn.classList.add('invisible');
+                } else {
+                    prevBtn.classList.remove('invisible');
+                }
+
+                if (currentSlide === totalSlides - 1) {
+                    nextBtn.classList.add('hidden');
+                    startBtn.classList.remove('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                    startBtn.classList.add('hidden');
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateUI();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateUI();
+                }
+            });
+
+            // Global navigation logic for data-goto
+            document.querySelectorAll('[data-goto]').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    const targetPage = element.getAttribute('data-goto');
+                    // In a real prototype, this would trigger a page change
+                    console.log(`Navigating to: ${targetPage}`);
+                    // For the sake of this prompt's functionality, we'll alert or mock the transition
+                    if (targetPage) {
+                        // In a real multi-page environment, this could be window.location.href = targetPage + ".html";
+                        // Here we simulate the action
+                        document.body.style.opacity = '0';
+                        setTimeout(() => {
+                            alert('正在導向至 ID: ' + targetPage);
+                            document.body.style.opacity = '1';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+
+<script>
+  // Pro Prototype - Static Navigation Shim
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-goto]');
+      if (target) {
+        e.preventDefault();
+        const pageId = target.getAttribute('data-goto');
+        // Navigate to the corresponding HTML file
+        window.location.href = pageId + '.html';
+      }
+    });
+  });
+</script>
+</body>
+</html>
+```
