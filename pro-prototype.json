@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "topic": "Demo。 繁體中文介面",
+  "createdAt": "2025-12-24T07:06:28.975Z",
+  "pages": [
+    {
+      "id": "p1",
+      "title": "啟動歡迎頁",
+      "description": "展示品牌標誌與引人入勝的背景圖，提供「開始使用」按鈕。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p2"
+      ],
+      "position": {
+        "x": -200.1694937859825,
+        "y": 428.898305302377
+      }
+    },
+    {
+      "id": "p2",
+      "title": "登入與註冊頁面",
+      "description": "包含帳號密碼輸入框、忘記密碼連結，以及社群媒體快速登入選項。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p1",
+        "p9",
+        "p4",
+        "p3"
+      ],
+      "position": {
+        "x": 0.927824661117783,
+        "y": -101.80413150416172
+      }
+    },
+    {
+      "id": "p3",
+      "title": "新手功能導覽",
+      "description": "採用分頁滑動設計，介紹應用程式的三大核心功能與價值。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p4"
+      ],
+      "position": {
+        "x": 2099.0206318969517,
+        "y": 1240.9793851856152
+      }
+    },
+    {
+      "id": "p4",
+      "title": "應用程式主首頁",
+      "description": "展示當前摘要資訊、動態消息流以及頂部搜尋欄與底部導覽列。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p7",
+        "p8",
+        "p5",
+        "p6",
+        "p9"
+      ],
+      "position": {
+        "x": -115.15466022027837,
+        "y": 978.350524445474
+      }
+    },
+    {
+      "id": "p5",
+      "title": "探索與搜尋頁面",
+      "description": "提供分類標籤與熱門搜尋關鍵字，幫助使用者快速尋找感興趣的內容。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p4",
+        "p6",
+        "p5",
+        "p7",
+        "p8"
+      ],
+      "position": {
+        "x": 1892.2164961221501,
+        "y": -311.08248061075386
+      }
+    },
+    {
+      "id": "p6",
+      "title": "內容詳情頁面",
+      "description": "詳細顯示選定項目的描述、圖片、評論以及「立即行動」按鈕。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p5",
+        "p9"
+      ],
+      "position": {
+        "x": 2890.7142714162683,
+        "y": 1067.8571241597351
+      }
+    },
+    {
+      "id": "p7",
+      "title": "個人帳戶中心",
+      "description": "展示用戶頭像、等級、收藏清單以及編輯個人資料的入口。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p4",
+        "p8",
+        "p6",
+        "p5",
+        "p9"
+      ],
+      "position": {
+        "x": 2697.2023561141573,
+        "y": -202.38093551662416
+      }
+    },
+    {
+      "id": "p8",
+      "title": "系統與偏好設定",
+      "description": "包含通知管理、隱私權政策、深色模式切換以及登出選項。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p7",
+        "p2"
+      ],
+      "position": {
+        "x": 2399.6907308071486,
+        "y": 1192.783508148491
+      }
+    },
+    {
+      "id": "p9",
+      "title": "操作成功確認頁",
+      "description": "顯示醒目的成功圖示與訊息，並提供返回首頁或進行下一個操作的按鈕。",
+      "status": "completed",
+      "suggestedNavigation": [
+        "p4",
+        "p6",
+        "p5",
+        "p8"
+      ]
+    }
+  ]
+}
